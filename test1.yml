@@ -1,0 +1,17 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  resourceGroupName: 'my-resource-group'
+  location: 'eastus'
+
+steps:
+- task: AzureResourceGroupDeployment@2
+  inputs:
+    azureSubscription: 'my-subscription'
+    resourceGroupName: $(resourceGroupName)
+    location: $(location)
+    action: 'Create Or Update Resource Group'
